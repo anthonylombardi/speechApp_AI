@@ -3,19 +3,19 @@ export function $(selector) {
 }
 
 export function showElement(selector) {
-  $(selector).classList.remove('hidden');
-}
-
-export function hideElement(selector) {
-  $(selector).classList.add('hidden');
-}
-
-export function showElement(selector) {
   const element = $(selector);
   if (element) {
-      element.classList.remove('hidden');
+    element.classList.remove('hidden');
   } else {
-      console.warn(`Element with selector "${selector}" not found`);
+    console.warn(`Element with selector "${selector}" not found`);
   }
 }
 
+export function hideElement(selector) {
+  const element = $(selector);
+  if (element) {
+    element.classList.add('hidden');
+  } else {
+    console.warn(`Element with selector "${selector}" not found`);
+  }
+}

@@ -9,6 +9,7 @@
   <script src="src/main.js" type="module" defer></script>
 </head>
 <body>
+  <!-- Start Page Section -->
   <div id="page-start" class="page center" current>
     <div class="content">
       <div id="power-by">Start your VirtuAule Speak Practice here.</div>
@@ -28,7 +29,19 @@
     </div>
   </div>
 
-  <!-- Placeholder for voice speed control -->
-  <input type="range" id="speech-voice-speed" min="0.5" max="2" step="0.1" value="1">
+  <!-- Main Page Section (Initially Hidden) -->
+  <div id="page-main" class="page hidden">
+    <div class="content">
+      <h2>Main Content</h2>
+      <!-- Voice Speed Control -->
+      <label for="speech-voice-speed">Voice Speed:</label>
+      <input type="range" id="speech-voice-speed" min="0.5" max="2" step="0.1" value="1" aria-label="Voice Speed">
+      
+      <!-- Phrase Navigation -->
+      <button id="button-prev-phrase">Previous Phrase</button>
+      <button id="button-next-phrase">Next Phrase</button>
+    </div>
+  </div>
+
 </body>
 </html>
