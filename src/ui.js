@@ -9,3 +9,13 @@ export function showElement(selector) {
 export function hideElement(selector) {
   $(selector).classList.add('hidden');
 }
+
+export function showElement(selector) {
+  const element = $(selector);
+  if (element) {
+      element.classList.remove('hidden');
+  } else {
+      console.warn(`Element with selector "${selector}" not found`);
+  }
+}
+

@@ -2,14 +2,17 @@ import { getStorage, setStorage } from './storage.js';
 import { $ } from './ui.js';
 
 export function initOptions() {
-  const voices = window.speechSynthesis.getVoices();
-  const voiceSpeed = getStorage('speech-voice-speed', 1);
-  $('#speech-voice-speed').value = voiceSpeed;
+  const voiceSpeedInput = document.getElementById('speech-voice-speed');
+  if (voiceSpeedInput) {
+    const voiceSpeed = getStorage('speech-voice-speed', 1);
+    voiceSpeedInput.value = voiceSpeed;
 
-  // Set event listeners for option changes
-  $('#speech-voice-speed').addEventListener('change', e => {
-    setStorage('speech-voice-speed', e.target.value);
-  });
+    voiceSpeedInput.addEventListener('change', e => {
+      setStorage('speech-voice-speed', e.target.value);
+    });
+  } else {
+    console.warn('Element #speech-voice-speed not found');
+  }
 }
 
 export function setPhrase(change) {
