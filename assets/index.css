@@ -1,0 +1,36 @@
+/* General resets */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; font-family: sans-serif; }
+button { cursor: pointer; }
+
+/* Page container styling */
+.page {
+  display: none;
+  height: 100%;
+}
+
+.page[current] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-start .content {
+  text-align: center;
+}
+
+#button-start {
+  background: #0f0;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+#microphone {
+  color: #bbb;
+  margin-top: 10px;
+}
+
+/* Simplified class structure for dynamic display and styling */
+.hidden { display: none !important; }
+#text-selector, #text-add, #text-view { overflow-y: auto; }
