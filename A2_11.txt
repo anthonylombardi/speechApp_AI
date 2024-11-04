@@ -1,0 +1,74 @@
+id: 1
+name: Part A
+
+Are you thirsty?
+Yes, I am.
+What would you like to drink?
+I'll have a beer.
+Are you hungry?
+No, I'm not.
+I had a late lunch.
+We'd like a table for four, please.
+Are you ready to order?
+What would you like to eat?
+Would you like some vegetables?
+I'd like some spinach.
+Spinach is good for you.
+There's some wine on the table,
+but there isn't any water...
+and there isn't any bread.
+There are some knives on the table,
+but there aren't any forks...
+and there aren't any spoons.
+Could you pass the salt and pepper?
+Could you pass the oil and vinegar?
+Could I have some coffee, please?
+Would you like some sugar?
+Do you like German beer?
+Yes, I do.
+Do you like Australian wine?
+No, I don't.
+Do you like Turkish coffee?
+I don't know.
+Could I have a piece of cake?
+Could I have a cup of tea?
+Could we have...
+another bottle of wine?
+Could we have our bill, please?
+
+===
+id: 2
+name: Part B
+
+Do you take credit cards?
+I'm afraid not, sir.
+I had lunch with Tim today.
+Where did you go?
+We went to that new restaurant -
+the Italian one...
+on the corner.
+What's it like?
+It's good, and it's not expensive.
+What did you have?
+I had spaghetti.
+It was delicious!
+Do you like eating out?
+Do you like spicy food?
+I eat - I ate
+I drink - I drank
+Where were you born?
+I was born in Vancouver.
+Where is that exactly?
+It's in Western Canada,
+not far from Seattle.
+When was television invented?
+Who invented the radio?
+How many hours...
+are there in a day?
+How many days...
+are there in a week?
+1st August 1914
+Where was Marco Polo born?
+He was born in Venice.
+When was he born?
+In 1254.
