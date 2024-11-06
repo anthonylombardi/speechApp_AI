@@ -16,7 +16,8 @@ export function initOptions() {
 }
 
 export function setPhrase(change) {
-  const phrases = getStorage('texts').phrases;
+  const texts = getStorage('texts', {});
+  const phrases = texts.phrases || [];
   let currentPhrase = getStorage('current-phrase', 0);
   currentPhrase = Math.max(0, Math.min(phrases.length - 1, currentPhrase + change));
   $('#phrase').innerText = phrases[currentPhrase];
@@ -32,5 +33,5 @@ export function speakText(text) {
 
 function getVoiceOption() {
   const voices = speechSynthesis.getVoices();
-  return voices.find(voice => voice.lang.includes('en'));
+  return voices.find(voice => voice.lang.includes('en')) || voices[0];
 }

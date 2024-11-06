@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
     return;
   }
 
-  // Prevent page reload on START button click
+  // START button click handler to prevent page reload
   $('#button-start').addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default behavior
     console.log('START button clicked'); // Confirm button click
@@ -36,6 +36,10 @@ function fetchTextsAndHomophones() {
       setStorage('homophones', parseHomophones(homophones)); // Parse and store homophones
       initOptions(); // Reinitialize options after loading data
       $('#loading').remove(); // Remove loading indicator
+    })
+    .catch(error => {
+      console.error('Error loading texts or homophones:', error);
+      $('#loading').textContent = 'Failed to load resources.';
     });
 }
 
@@ -45,10 +49,62 @@ function requestMicrophoneAccess() {
     .then(stream => {
       console.log('Microphone access granted');
       $('#microphone').style.display = 'none'; // Hide microphone prompt
+      initializeSpeechRecognition(stream);
     })
     .catch(err => {
       console.error('Microphone access denied:', err);
       $('#microphone').textContent = 'Microphone access required to proceed';
       $('#microphone').classList.remove('hidden'); // Show error message if access denied
     });
+}
+
+// Initialize Speech Recognition
+function initializeSpeechRecognition(stream) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  const startRecordBtn = document.getElementById('button-record');
+  const stopRecordBtn = document.getElementById('button-stop-record');
+  const transcriptDisplay = document.getElementById('transcript');
+  const statusDisplay = document.getElementById('status');
+
+  startRecordBtn.addEventListener('click', () => {
+    recognition.start();
+    statusDisplay.textContent = 'Listening...';
+    startRecordBtn.disabled = true;
+    stopRecordBtn.disabled = false;
+    console.log('Speech recognition started');
+  });
+
+  stopRecordBtn.addEventListener('click', () => {
+    recognition.stop();
+    statusDisplay.textContent = 'Stopped';
+    startRecordBtn.disabled = false;
+    stopRecordBtn.disabled = true;
+    console.log('Speech recognition stopped');
+  });
+
+  recognition.addEventListener('result', (event) => {
+    const transcript = event.results[0][0].transcript;
+    transcriptDisplay.textContent += transcript + '\n';
+    console.log('Transcript:', transcript);
+  });
+
+  recognition.addEventListener('speechend', () => {
+    recognition.stop();
+    statusDisplay.textContent = 'Speech ended';
+    startRecordBtn.disabled = false;
+    stopRecordBtn.disabled = true;
+    console.log('Speech has ended');
+  });
+
+  recognition.addEventListener('error', (event) => {
+    statusDisplay.textContent = `Error: ${event.error}`;
+    console.error('Speech recognition error:', event.error);
+    startRecordBtn.disabled = false;
+    stopRecordBtn.disabled = true;
+  });
 }
